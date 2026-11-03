@@ -6,12 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "seed": "ts-node ./scripts/loadDB.ts",
     "lint": "eslint"
   },
   "dependencies": {
+    "@datastax/astra-db-ts": "^2.3.0",
+    "@openrouter/sdk": "^1.5.34",
+    "dotenv": "^18.0.9",
+    "langchain": "^1.6.1",
     "next": "16.4.4",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
