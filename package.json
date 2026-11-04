@@ -10,13 +10,18 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ai-sdk/react": "^4.0.166",
     "@datastax/astra-db-ts": "^2.3.0",
+    "@openrouter/ai-sdk-provider": "^3.1.0",
     "@openrouter/sdk": "^1.5.34",
     "dotenv": "^18.0.9",
     "langchain": "^1.6.1",
     "next": "16.4.4",
+    "puppeteer": "^25.16.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
