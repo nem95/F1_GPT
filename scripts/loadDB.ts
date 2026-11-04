@@ -11,6 +11,7 @@ const {
   ASTRA_DB_API_ENDPOINT,
   ASTRA_DB_APPLICATION_TOKEN,
   OPENROUTER_API_KEY,
+  EMBEDDING_MODEL,
 } = process.env;
 
 const openrouter = new OpenRouter(
@@ -74,7 +75,7 @@ const loadSampleData = async () => {
       for await (const chunk of chunks) {
         const embedding = await openrouter.embeddings.generate({
           requestBody: {
-            model: "openai/text-embedding-3-small",
+            model: EMBEDDING_MODEL as string,
             input: chunk,
             encodingFormat: "float"
           }
