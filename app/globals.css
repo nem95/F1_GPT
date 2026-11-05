@@ -14,8 +14,6 @@
 
 * { 
   font-family: Verdana, Tahoma, sans-serif;
-  margin: 0;
-  padding: 0; 
 }
 
 body {
@@ -24,7 +22,11 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: var(--background);
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url("./assets/background.jpg");
+  background-size: cover;
+  background-position: center;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
@@ -36,12 +38,11 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(to bottom, #f8f8f8, #cfcfcf);
   height: 80vh;
   width: 80vw;
   padding: 20px;
   text-align: center;
-  color: #383838;
+  color: #FFF;
   border-radius: 15px;
 }
 
@@ -55,64 +56,130 @@ section.populated {
   display: flex;
   flex-direction: column;
   color: #383838;
-  overflow-y: scroll;
-
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #640F11 #111216;
 }
 
 .starter-text {
   padding: 0 80px;
 }
 
+.enjoy-text {
+  position: relative;
+  margin: auto;
+  width: 370px;
+}
+.enjoy-text::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 80px;
+  height: 2px;
+  background-color: #640F11;
+}
+.enjoy-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 80px;
+  height: 2px;
+  background-color: #640F11;
+}
+
 form {
-  display: flex;
-  height: 50px;
+ display: flex;
+  align-items: center;
   width: 100%;
-  border-top: 2px solid #828282;
-  padding-top: 10px;
-  border-radius: 0 0 10px 10px;
-  overflow: hidden;
+  height: 80px;
+  padding: 10px 12px 10px 25px;
+  background: #101114;
+  border: 2px solid #ff0028;
+  border-radius: 50px;
+  box-shadow: 0 0 20px rgba(255, 0, 40, 0.15);
+  box-sizing: border-box;
 }
 
 input.question-box {
-  width: 85%;
-  padding: 10px;
-  font-size: 15px;
-  color: #383838;
-  background-color: #f0f0f0;
+  flex: 1;
+  height: 100%;
+  padding: 0 20px;
+  background: transparent;
   border: none;
+  outline: none;
+  color: white;
+  font-size: 18px;
 }
 
 input[type=submit] {
-  width: 15%;
-  color: #ffffff;
-  font-size: 15px;
+ height: 60px;
+  padding: 0 35px;
+  background: #ff0028;
   border: none;
-  padding: 10px;
+  border-radius: 40px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  background-color: #171717;
+  transition: 0.3s ease;
+}
+
+input[type=submit]:hover {
+  background: #640F11;
+  box-shadow: 0 0 15px rgba(255, 0, 40, 0.4);
 }
 
 .bubble {
-  padding: 8px;
-  margin: 8px;
+  position: relative;
+  padding: 14px 20px;
+  margin: 12px 8px;
   font-size: 15px;
-  border: none;
-  color: #383838;
-  box-shadow: 0px 8px 24px #959da533;
-  max-width: 80%;
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 75%;
   text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  overflow-wrap: break-word;
+  transition: all 0.3s ease;
 }
 
 .bubble.user {
-  background-color: rgb(225, 244, 255);
+  background: linear-gradient(135deg, #640F11, #a30f1b);
+  color: #ffffff;
   margin-left: auto;
-  border-radius: 20px 20px 0px 20px;
+  margin-right: 8px;
+  border: 1px solid rgba(255, 40, 55, 0.4);
+  border-radius: 18px 18px 4px 18px;
+  box-shadow: 0 6px 20px rgba(100, 15, 17, 0.25);
 }
 
 .bubble.assistant {
-  background-color: #f0f0f0;
+  background: linear-gradient(145deg, #1c1d22, #111216);
+  color: #e8e8e8;
   margin-right: auto;
-  border-radius: 20px 20px 20px 0px;
+  margin-left: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 4px 18px 18px 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* HOVER EFFECT */
+.bubble.user:hover,
+.bubble.assistant:hover {
+  transform: translateY(-2px);
+}
+
+/* LINKS */
+.bubble.assistant a {
+  color: #ff3545;
+  text-decoration: none;
+}
+
+.bubble.assistant a:hover {
+  text-decoration: underline;
 }
 
 .prompt-suggestions-row {
@@ -146,4 +213,14 @@ input[type=submit] {
   33% { background-size: calc(100%/3) 0, calc(100%/3) 100%, calc(100%/3) 100%; }
   50% { background-size: calc(100%/3) 100%, calc(100%/3) 0, calc(100%/3) 0; }
   66%  { background-size: calc(100%/3) 100%, calc(100%/3) 100%, calc(100%/3) 0;}
+}
+
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 600px) {
+  .bubble {
+    max-width: 90%;
+    font-size: 14px;
+    padding: 12px 15px;
+  }
 }

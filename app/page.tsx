@@ -37,48 +37,57 @@ export default function Home() {
   }
 
   return (
-    <main className="flex">
+    <>
       <Image
         src={f1GPTLogo}
         alt="F1 GPT Logo"
         width={250}
         height={37}
         priority
+        className=""
       />
-      <section className={!noMessage ? "populated" : ""}>
-        {noMessage ? (
-          <>
-            <p className="starter-text">
-              The Ultimate place for Fomrula One super Fans!
-              Ask F1 GPT anything about the sport, its history, and its drivers.
-              and it will provide you with accurate and relevant answers.
-              We hope you enjoy!
-            </p>
-            <br />
 
-            {/* Should not pass onPromptClick but on a small app like this, let's say it's ok */}
-            <PromptSuggestionsRow onPromptClick={handlePromptClick}/>
-          </>
-        ) : (
-          <>
-            {/* map messages onto text bubbles */}
-            {messages.map((message, index) => (
-              <Bubble key={index} message={message} />
-            ))}
-            {isLoading && <LoadingBubble />}
-          </>
-        )}
-      </section>
+      <main className="flex">
+        <section className={!noMessage ? "populated" : ""}>
+          {noMessage ? (
+            <>
+              <h1 className="text-white font-black text-6xl mb-12">
+                Welcome to <span className="font-sans italic text-[#F70000]">F1GPT</span>
+              </h1>
+              <p className="starter-text mt-12">
+                The Ultimate place for Fomrula One super Fans!
+                Ask F1 GPT anything about the sport, its history, and its drivers.
+                and it will provide you with accurate and relevant answers.
+              </p>
+              <br />
 
-      <form onSubmit={handleSubmit} >
-          <input 
-            className="question-box" 
-            placeholder="Ask F1 GPT anything..." 
-            onChange={handleInputChange}
-            value={input}
-          />
-          <input type="submit" value="Submit" /> 
-        </form>
-    </main>
+              <p className="uppercase enjoy-text">
+                We hope you enjoy!
+              </p>
+
+              {/* Should not pass onPromptClick but on a small app like this, let's say it's ok */}
+              <PromptSuggestionsRow onPromptClick={handlePromptClick}/>
+            </>
+          ) : (
+            <>
+              {messages.map((message, index) => (
+                <Bubble key={index} message={message} />
+              ))}
+              {isLoading && <LoadingBubble />}
+            </>
+          )}
+        </section>
+
+        <form onSubmit={handleSubmit} className="chat-input">
+            <input 
+              className="question-box" 
+              placeholder="Ask F1 GPT anything..." 
+              onChange={handleInputChange}
+              value={input}
+            />
+            <input type="submit" value="Submit" /> 
+          </form>
+      </main>
+    </>
   );
 }
