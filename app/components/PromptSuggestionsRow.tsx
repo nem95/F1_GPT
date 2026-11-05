@@ -10,7 +10,7 @@ function PromptSuggestionsRow({ onPromptClick }: { onPromptClick: (prompt: strin
   ];
 
   return (
-    <div className='prompt-suggestion-row'>
+    <div className='prompt-suggestion-row mt-8'>
       {prompts.map((prompt, index) => (
         <PromptSuggestionButton
           key={`suggestion-${index}`}
