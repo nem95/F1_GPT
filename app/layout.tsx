@@ -12,9 +12,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const title = "F1 GPT";
+const description = "Best place to know everything about Formula 1. Ask questions and get answers about the sport, its history, and its drivers.";
+
 export const metadata: Metadata = {
-  title: "F1 GPT",
-  description: "Best place to know everything about Formula 1. Ask questions and get answers about the sport, its history, and its drivers.",
+  metadataBase: process.env.NEXT_PUBLIC_SITE_URL
+    ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
+    : undefined,
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    siteName: title,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
